@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>INSTRUÇÕES</title>
+    <link rel="stylesheet" href="assets/css/estilo.css">
+</head>
+<body>
+<main>
+<h1>Arquitetura de Software</h1>
+<h1>Instruções deste Projeto</h1>
+
+<!-- ========================================================= -->
+<hr>
+<h2>1) Preparação do Ambiente de Desenvolvimento</h2>
+
+<p>
+Abra o terminal de comandos (prompt) e execute o comando a seguir para listar os pacotes do Python que estão instalados no seu computador:
+<br>
+<span class="terminal">pip list</span>
+</p>
+
+<p>
+Para esta aula precisaremos que os seguintes pacotes estejam instalados:
+</p>
+<pre class="terminal">
+Django==5.0.14
+termcolor==3.1.0
+</pre>
+
+<p>
+Caso algum deles não esteja instalado, execute os comandos a seguir:
+</p>
+<pre class="terminal">
+pip install Django
+</pre>
+<br>
+<pre class="terminal">
+pip install termcolor
+</pre>
+
+<!-- ========================================================= -->
+<hr>
+<h2>2) Baixando a Aplicação de Exemplo <i>Web Store</i></h2>
+
+<p>
+Acesse o <i>Google Sala de Aula</i> da disciplina e baixe o arquivo compactado <code>Padroes-Projeto-v1.zip</code> do local indicado pelo professor.
+<br>
+Depois descompacte o arquivo em uma pasta da sua preferência.
+</p>
+<img src="assets/imagens/4-pastas-proj.png" width="300">
+
+<p>
+Em seguida, abra o arquivo <code>instrucoes.html</code> no seu navegador para exibir estas instruções.
+Este arquivo está dentro da pasta <code>__INSTRUCOES</code> na raiz do projeto. 
+</p>
+<img src="assets/imagens/4-pastas-proj-2.png" width="450">
+
+
+<!-- ========================================================= -->
+<hr>
+<h2>3) Executando a Aplicação <i>Web Store</i></h2>
+
+<p>
+Agora abra o projeto no <i>VSCode</i> e em seguida abra o terminal dentro do próprio <i>VSCode</i> acessando o menú <code>View/Terminal</code> ou através do atalho <code>Ctrl + '</code>.
+<br>
+Depois execute a aplicação através do comando  <code>python manage.py runserver</code>.
+<br>
+Pra finalizar, abra o navegador e acesse o endereço 
+<code><a href="http://localhost:8000/">localhost:8000</a></code> para acessar a aplicação.
+<br>
+Se tudo foi OK, você verá a seguinte página:
+</p>
+<img src="assets/imagens/5-site-ok.png" width="700">
+
+<p>
+Acesse os menús da aplicação para visualizar as páginas de cadastro de  <i>Produtos</i> e de <i>Categorias</i>.
+</p>
+<img src="assets/imagens/6-site-produtos.png" width="600">
+&nbsp;&nbsp;&nbsp;
+<img src="assets/imagens/7-site-categorias.png" width="600">
+
+<p>
+    A seguir está o <strong>Diagrama Entidade-Relacionamento</strong> (<strong>DER</strong>) do banco de dados.
+</p>
+<img src="assets/imagens/1-der.png" width="800">
+
+
+<!-- ========================================================= -->
+<hr>
+<h2>4) Analisando o Código do Projeto</h2>
+
+<h3>Arquivo <code>views.py</code></h3>
+<p>
+Primeiro definimos um método chamado <code>obter_conexao()</code> que será utilizado para obter a conexão com o banco de dados.
+<br>
+Dessa forma, separamos o código de conexão porque iremos reutilizá-lo em vários outros métodos que iremos criar posteriormente neste arquivo.
+<br>
+Neste projeto estamos utilizando o banco de dados <i>SQLite</i> (arquivo <code>arq_soft.sqlite3</code>).
+</p>
+<img src="assets/imagens/8-views-1.png" width="900">
+
+<p>
+Definimos também um método chamado <code>executar_select()</code> que será utilizado para executar um comando <i>SELECT</i> usando <i>Linguagem SQL</i> para retornar os registros das tabelas do nosso banco de dados.
+</p>
+<img src="assets/imagens/8-views-3.png" width="900">
+
+<p>
+Temos outro método chamado <code>executar_sql()</code>, o qual será utilizado para executar outros comandos <i>SQL</i> no nosso banco de dados, como <i>INSERT</i>, <i>UPDATE</i> e <i>DELETE</i>.
+</p>
+<img src="assets/imagens/8-views-2.png" width="900">
+
+
+<p>
+Definimos um método chamado <code>home()</code> que será responsável por exibir a página inicial da nossa aplicação.
+Esta página não contém dados vindos do BD.
+</p>
+<img src="assets/imagens/8-views-4.png" width="500">
+
+<p>
+O método <code>categorias()</code> é responsável pelas ações referentes ao cadastro de <i>Categorias</i>.
+<br>
+Tais ações são definidas através do parâmetro <code>acao</code>, sendo elas:
+<ol>
+    <li>Exibir a página de <strong>listagem</strong> dos registros;</li>
+    <li>Exibir as páginas de <strong>edição</strong> dos registros (inclusão, alteração e exclusão);</li>
+    <li><strong>Salvar</strong> as informações no BD (incluir, alterar ou excluir).</li>
+</ol>
+Para um melhor entendimento, analise o código abaixo observando todos os <i>comentários</i> inseridos.
+</p>
+<img src="assets/imagens/8-views-5.png" width="1200">
+
+
+<p>
+O método <code>produtos()</code> é responsável pelas ações referentes ao cadastro de <i>Produtos</i> e segue a mesma estrutura do método <code>categorias()</code> explicado anteriormente.
+<br>
+Uma lógica adicional precisou ser inserida, pois para incluir ou alterar um produto precisamos selecionar a <i>categoria</i> a qual ele pertence. 
+<br>
+Assim, foi preciso inserir a variável de contexto <code>categorias</code> (<i>context</i>) para poder exibir os registros de categorias dentro da página de edição de produtos. Essa variável é carregada através do método <code>obter_categorias()</code>.
+</p>
+<img src="assets/imagens/8-views-6.png" width="1200">
+
+
+
+
+
+<h3>Arquivo <code>urls.py</code></h3>
+<p>
+Neste arquivo definimos as <strong>rotas URL</strong> que redirecionam a URL chamada no navegador para os métodos correspondenstes em <code>views.py</code>.
+<br>
+Para cada cadastro (<i>Produto</i> e <i>Categoria</i>), as suas rotas apontam para um único método e se diferenciam pela quantidade de parâmetros informados (<code>acao</code> e <code>id</code>).
+<br>
+Para um melhor entendimento, analise o código abaixo observando todos os <i>comentários</i> inseridos.
+</p>
+<img src="assets/imagens/8-views-7.png" width="700">
+
+
+
+
+<!-- ========================================================= -->
+<hr>
+<h2>5) Páginas HTML da nossa Aplicação</h2>
+
+<p>
+No Django, as páginas HTML são definidas usando <i>templates</i>, que são arquivos de texto (geralmente em HTML) que definem a estrutura e a aparência da página. 
+<br>
+Eles permitem exibir dados dinâmicos gerados no código Python, tornando as páginas interativas e personalizáveis. 
+<br>
+Os <i>templates</i> devem ser criados dentro de uma pasta chamada <i>templates</i> que deve estar na pasta da nossa aplicação - no nosso caso é a pasta <code>app/templates</code>.
+</p>
+<img src="assets/imagens/9-templates-1.png" width="350">
+
+<p>
+    Os <i>templates</i> permitem criar uma estrutura de herança entre as páginas, fazendo com que os códigos HTML e CSS possam ser reutilizados, evitando assim a duplicação de código.
+    <br>
+    No nosso projeto definimos um <i>template</i> <strong>Pai</strong> chamado <code>base.html</code>, o qual será herdado por todas as páginas da nossa aplicação.
+    <br>
+    É neste <i>template</i> <strong>Pai</strong> que definimos a estrutura e aparência geral das nossas páginas. 
+    <br>
+    Definimos também alguns blocos dentro de <code>base.html</code> (ver imagem abaixo) através da instrução <code>{% block ... %}</code>. 
+    <br>
+    Os blocos são <i>áreas</i> dentro do <i>template</i> <strong>Pai</strong> que podem ser substituídas por outros conteúdos
+    pelos <i>templates</i> <strong>Filhos</strong>.
+</p>
+
+<img src="assets/imagens/9-templates-2.png" width="800">
+
+
+<p>
+As páginas de cadastro da nossa aplicação foram definidas através de dois <i>templates</i>: um para <strong>listar</strong> os registros e outro para <strong>editar</strong> (incluir, alterar e excluir). 
+</p>
+
+<img src="assets/imagens/9-templates-3.png" width="300">
+
+<p>
+    A seguir estão os <i>templates</i> das páginas de listagem e de edição do cadastro de <i>Categorias</i>.
+    <br>
+    Perceba que para as ações de incluir, alterar e excluir está sendo utilizado um mesmo <i>template</i> (<code>categorias_editar.html</code>) que se ajusta conforme a ação a ser executada.
+</p>
+<img src="assets/imagens/9-templates-4.png" width="800">
+<img src="assets/imagens/9-templates-5.png" width="900">
+
+
+<!-- ========================================================= -->
+<hr>
+<h2>6) Arquivos Estáticos </h2>
+<p>
+Podemos perceber que a nossa aplicação foi estilizada através do uso de <i>CSS</i>.
+<br>
+No Django podemos definir arquivos de <i>CSS</i>, <i>Javascript</i> e <i>imagens</i> dentro de uma pasta chamada <code>static</code> dentro da pasta da nossa aplicação (<code>app</code>).
+<br>
+
+</p>
+
+<img src="assets/imagens/10-static-1.png" width="300">

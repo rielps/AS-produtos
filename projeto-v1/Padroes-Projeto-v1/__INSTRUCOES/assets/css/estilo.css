@@ -1,0 +1,151 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* font-size: 14pt; */
+    margin: 3px;
+    line-height: 1.8em;
+}   
+
+body{
+    background-color:floralwhite;
+}
+
+p{
+    margin-top: 30px;
+}
+
+hr{
+    margin: 20px 0px;
+}
+
+img{
+    border: 1px solid navy;
+}
+
+main h2{
+    color: rgb(7, 7, 232);
+    margin-top: 20px;
+}
+
+main h3{
+    margin-top: 40px;
+    font-variant: small-caps;
+    font-size: 1.7em;
+
+}
+
+strong{
+    margin: 1px;
+    color: blue;
+}
+
+i{
+    color: brown;
+}
+code{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: gainsboro;
+    padding: 1px 5px;
+    color: navy;
+    border-radius: 5px;
+    margin: 1px;
+    /* font-weight: bold; */
+    /* font-size: 0.95em; */
+    font-weight: normal;
+
+}
+
+h3 code{
+    font-weight: bold;
+}
+
+code a{
+    margin: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95em;
+}
+
+.terminal {
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    /* font-weight: bold; */
+    font-size: 1.1em;
+    color: yellow;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+code.sql {
+    background-color: rgb(243, 242, 242);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    color: maroon;
+    padding: 0px 15px 5px 15px;
+    display: inline-block;
+    border: 1px solid black;
+}
+
+.instrucao{
+    font-weight: bold;
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: block;
+    padding: 5px;
+    background-color: beige;
+    /* margin-left: 50px; */
+    margin-right: 300px;
+}
+
+header{
+    font-style: italic;
+    color:steelblue;
+}
+    
+.erro{
+    color: red;
+    background-color: yellow;
+    padding: 10px;
+    border: 1px solid red;
+    width: 90%;
+    border-radius: 10px;
+}
+
+span.erro{
+    color: red;
+    font-size: 0.8em;
+    font-weight: bold;
+    background-color: yellow;
+    padding: 3px;
+    border: 1px solid red;
+    border-radius: 7px;
+    margin: 1px;
+}
+
+table{
+    /* estilo da borda */
+    border: 1px solid navy;
+    border-collapse: collapse;
+
+    /* margem */
+    margin: 5px;
+
+    /* largura */
+    min-width: 50%;
+    max-width: 100%;
+}
+
+th{
+    /* cor de fundo */
+    background-color: #D4E3FE;
+}
+
+th, td{
+    /* estilo da borda */
+    border: 1px solid navy;
+
+    /* espaçamento interno */
+    padding: 1px 5px;
+
+    /* tamanho da fonte */
+    font-size: 0.8em;
+}
